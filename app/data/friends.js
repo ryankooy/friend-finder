@@ -11,12 +11,4 @@ var friends = [
     }
 ];
 
-var userResults = friends[1].scores;
-
-var score = userResults.reduce(scoreSum);
-
-function scoreSum(total, num) {
-    return total + num;
-}
-
-console.log(score);
+module.exports = friends;

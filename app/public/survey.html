@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>Friend Finder: Survey</head>
+    <body>
+        <script>
+            var userResults = friends[1].scores;
+            var score = userResults.reduce(scoreSum);
+            function scoreSum(total, num) {
+                return total + num;
+            }
+            console.log(score);
+        </script>
+    </body>
+</html>
