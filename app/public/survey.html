@@ -7,23 +7,41 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper-utils.min.js"></script>
+        <style>
+            .dropdown {
+                position: relative;
+            }
+        </style>
     </head>
     <body>
-            <div class="col-12">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h3><strong>Friend Search</strong></h3>
-                    </div>
-                    <div class="card-body">
-                        <input type="text" id="friend-search" class="form-control">
-                        <br>
-                        <div class="text-right">
-                        <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="fa fa-search"></span> Find them!</button>
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3><strong>Survey Questions</strong></h3>
+                    <hr>
+                    <h4><b>About You</b></h4>
+                </div>
+                <div class="card-body">
+                    <input type="text" id="friend-search" class="form-control">
+                    <br>
+                    <div class="text-right">
+                    <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="fa fa-search"></span> Find them!</button>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button">Action</button>
+                        <button class="dropdown-item" type="button">Another action</button>
+                        <button class="dropdown-item" type="button">Something else here</button>
                     </div>
                 </div>
             </div>
+        </div>
         <script>
-            var userResults = friends[1].scores;
+            var userResults = friends[0].scores;
             var score = userResults.reduce(scoreSum);
             function scoreSum(total, num) {
                 return total + num;
