@@ -177,12 +177,13 @@
         </div>
         </footer>
         <script type="text/javascript">
+            // 
             var userResults = [];
             $(".chosen-select").on("click", function(event) {
                 event.preventDefault();
                 var selected = parseInt($(this).val());
                 console.log(selected);
-                if(selected === 1 || selected === 2 || selected === 3 || selected === 4 || selected === 5) {
+                if(selected <= 6) {
                     userResults.push(selected);
                     console.log(userResults);
                 }
@@ -205,6 +206,9 @@
                     $("#your-name").val("");
                     $("#your-pic").val("");
                 });
+                function compare(yours, match) {
+                    // score vs friends
+                }
             });
         </script>
     </body>
