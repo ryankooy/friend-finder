@@ -8,7 +8,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script srv="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
         <style>
             .dropdown {
                 position: relative;
@@ -183,7 +183,7 @@
                 event.preventDefault();
                 var selected = parseInt($(this).val());
                 console.log(selected);
-                if(selected <= 6) {
+                if(selected <= 5 && userResults.length < 10) {
                     userResults.push(selected);
                     console.log(userResults);
                 }
@@ -206,9 +206,11 @@
                     $("#your-name").val("");
                     $("#your-pic").val("");
                 });
-                function compare(yours, match) {
-                    // score vs friends
-                }
+                // function compare() {
+                //     var n = friends.filter(function(item) {
+                //         if(score)
+                //     });
+                // }
             });
         </script>
     </body>
