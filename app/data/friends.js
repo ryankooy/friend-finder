@@ -1,7 +1,7 @@
 var friends = [
     {
         "name": "Sprayleigh",
-        "photo": "#",
+        "photo": "https://media.gettyimages.com/photos/crazy-pink-1980s-girl-and-sweater-picture-id157529435?s=2048x2048",
         "scores": [
             "1",
             "5",
@@ -17,7 +17,7 @@ var friends = [
     },
     {
         "name": "Toberden",
-        "photo": "#",
+        "photo": "https://media.gettyimages.com/photos/nerd-student-with-retro-glasses-and-pink-wallpaper-picture-id157327515?s=2048x2048",
         "scores": [
             "5",
             "3",
@@ -29,6 +29,22 @@ var friends = [
             "1",
             "3",
             "2"
+        ]
+    },
+    {
+        "name": "Don-E",
+        "photo": "https://image.shutterstock.com/image-photo/funny-man-watermelon-helmet-googles-260nw-157354478.jpg",
+        "scores": [
+            "1",
+            "1",
+            "5",
+            "4",
+            "3",
+            "1",
+            "3",
+            "3",
+            "3",
+            "3"
         ]
     }
 ];

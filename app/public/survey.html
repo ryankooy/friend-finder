@@ -177,7 +177,6 @@
         </div>
         </footer>
         <script type="text/javascript">
-            // 
             var userResults = [];
             $(".chosen-select").on("click", function(event) {
                 event.preventDefault();
@@ -206,11 +205,9 @@
                     $("#your-name").val("");
                     $("#your-pic").val("");
                 });
-                // function compare() {
-                //     var n = friends.filter(function(item) {
-                //         if(score)
-                //     });
-                // }
+                $.get("/api/friends", friends, function(data) {
+                    console.log(data[0].scores);
+                });
             });
         </script>
     </body>
