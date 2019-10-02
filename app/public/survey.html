@@ -166,25 +166,44 @@
                     <p><strong>10. What have you done?</strong></p>
                 </div>
                 <br>
-                <button class="submit">Submit</button>                    
+                <button type="button" class="btn btn-primary submit" data-toggle="modal" data-target="#match">Submit</button>                    
             </div>
         </div>
+        <div class="modal fade" id="match" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">It's A Match!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body" id="friend-match">
+                </div>
+                <div class="modal-body" id="match-pic">
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>        
         <footer class="footer">
-        <div class="container">
-            <p>
-                <a href="/api/friends">API Friends Link</a>
-            </p>
-        </div>
+            <div class="container">
+                <p>
+                    <a href="/api/friends">API Friends Link</a>
+                </p>
+            </div>
         </footer>
         <script type="text/javascript">
             var userResults = [];
             $(".chosen-select").on("click", function(event) {
                 event.preventDefault();
                 var selected = parseInt($(this).val());
-                console.log(selected);
+                // console.log(selected);
                 if(selected <= 5 && userResults.length < 10) {
                     userResults.push(selected);
-                    console.log(userResults);
+                    // console.log(userResults);
                 }
             });
             $(".submit").on("click", function(event) {
@@ -199,15 +218,35 @@
                     photo: $("#your-pic").val().trim(),
                     scores: userResults
                 };
-                console.log(newFriend);
-                $.post("/api/friends", newFriend,
-                function(data) {
+                // console.log(newFriend);
+                function getFriends() {
+                    var totalDiff = 100;
+                    var matchN;
+                    var matchP;
+                    $.ajax({ url: "/api/friends", method: "GET" }).then(function(data) {
+                        for (var i = 0; i < data.length; i++) {
+                            var diff = 0;
+                            for (var j = 0; j < userResults.length; j++) {
+                                diff += Math.abs(data[i].scores[j] - userResults[j]);
+                            }
+                            console.log(diff);
+                            if(diff < totalDiff) {
+                                totalDiff = diff;
+                                matchN = data[i].name;
+                                matchP = data[i].photo;
+                                console.log(diff);
+                                console.log(matchN);
+                            }
+                        }
+                    });
+                    $.post("/api/friends", newFriend).then(function(data) {
                     $("#your-name").val("");
                     $("#your-pic").val("");
-                });
-                $.get("/api/friends", friends, function(data) {
-                    console.log(data[0].scores);
-                });
+                    $("#friend-match").html(data.matchN);
+                    $("#match-pic").attr("src", data.matchP);
+                    });
+                }
+                getFriends();
             });
         </script>
     </body>
