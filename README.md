@@ -1,2 +1,3 @@
-# friend-finder
-UNC Coding Bootcamp Activity XIII
+# Friend Finder
+
+https://github.com/ryankooy/friend-finder.git/
