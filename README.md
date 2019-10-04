@@ -1,3 +1,3 @@
 # Friend Finder
 
-https://github.com/ryankooy/friend-finder.git/
+https://fierce-tor-27327.herokuapp.com
