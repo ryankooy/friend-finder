@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <title>Friend Finder: Survey</title>
+        <meta charset="UTF-8">
+        <title>FriendFinder: Survey</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -30,7 +30,7 @@
                 color: white;
             }
             img {
-                max-width: 200px;
+                max-width: 250px;
             }
         </style>
     </head>
@@ -106,7 +106,7 @@
                         <option class="choice" value="4">4. Agree</option>
                         <option class="choice" value="5">5. Strongly Agree</option>
                     </select>
-                    <p><strong>5. The seven dwarves from the Disney Classic <opaque>Snow White</opaque> were initially written to be seven trolls, but the actress playing Snow White was too terrified of the trolls that she would not show up for filming.</strong></p>
+                    <p><strong>5. The seven dwarves from the Disney classic <i>Snow White</i> were initially written to be seven trolls, but the actress playing Snow White was too terrified of the trolls that she would not show up for filming.</strong></p>
                 </div>
                 <br>
                 <div>
@@ -196,23 +196,27 @@
         <footer class="footer">
             <div class="container">
                 <p>
-                    <a href="/api/friends">API Friends Link</a>
+                    <a href="/api/friends">API Friends</a>
                 </p>
             </div>
         </footer>
         <script type="text/javascript">
             var userResults = [];
+            // grabbing the data value from each answer click
             $(".chosen-select").on("click", function(event) {
                 event.preventDefault();
-                var sel = $(this)
+                var sel = $(this);
                 var qnum = sel.data("qnum");
                 var selected = parseInt(sel.val());
                 if(selected <= 5) {
                     userResults[qnum] = selected;
                 }
             });
+            // responding to submit click upon user's survey completion
             $(".submit").on("click", function(event) {
+                // preventing a page refresh
                 event.preventDefault();
+                // function capturing the user's information
                 function getFriends() {
                     var totalDiff = 100;
                     var matchN;
@@ -222,7 +226,7 @@
                         photo: $("#your-pic").val().trim(),
                         scores: userResults
                     };
-                    console.log(newFriend);
+                    // calculating user's scores and comparing them to those in the friends object array
                     $.ajax({ url: "/api/friends", method: "GET" }).then(function(data) {
                         for (var i = 0; i < data.length; i++) {
                             var diff = 0;
@@ -237,10 +241,9 @@
                         }
                         $("#your-name").val("");
                         $("#your-pic").val("");
+                        // showing the user's match info in the modal
                         $("#friend-match").html(matchN);
                         $("#match-pic").attr("src", matchP);
-                        console.log(matchN);
-                        console.log(matchP);
                         $.post("/api/friends", newFriend).then(function(err) {
                             if(err) throw err;
                         });

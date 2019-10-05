@@ -46,6 +46,22 @@ var friends = [
             "3",
             "3"
         ]
+    },
+    {
+        "name": "Poppy",
+        "photo": "https://evolvor.com/wp-content/uploads/2019/08/old-man-internet.jpg",
+        "scores": [
+            "2",
+            "5",
+            "3",
+            "2",
+            "4",
+            "5",
+            "1",
+            "4",
+            "2",
+            "5"
+        ]
     }
 ];
 
